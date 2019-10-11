@@ -2,7 +2,6 @@ package elte.almasi.mate.lenyek.model;
 
 public class Szivacs extends Leny {
 
-
     public Szivacs(String nev, int vizMennyiseg) {
         super(nev, vizMennyiseg);
         setMaxVizMennyiseg(20);

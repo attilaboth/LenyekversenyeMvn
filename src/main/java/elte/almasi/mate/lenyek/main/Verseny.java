@@ -1,14 +1,11 @@
 package elte.almasi.mate.lenyek.main;
 
-import elte.almasi.mate.lenyek.model.Homokjaro;
 import elte.almasi.mate.lenyek.model.Leny;
 import elte.almasi.mate.lenyek.model.Szivacs;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Verseny {
 
@@ -17,8 +14,9 @@ public class Verseny {
 
         //1. file beolvasása
 
+
         //2. objektumok inicializálása
-        List<Leny> lenyek = new ArrayList<>();
+        List<Leny> lenyek = new ArrayList<Leny>();
 
         /*
         Leny homokjaro = new Homokjaro("Vandor", 4);
