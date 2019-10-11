@@ -26,7 +26,13 @@ public abstract class Leny {
     }
 
     public void setVizMennyiseg(int vizMennyiseg) {
-        this.vizMennyiseg = vizMennyiseg;
+        this.vizMennyiseg += vizMennyiseg;
+        if(getVizMennyiseg() <= 0){
+            setAlive(false);
+        }
+        if(getVizMennyiseg() >= getMaxVizMennyiseg()){
+            this.vizMennyiseg = getMaxVizMennyiseg();
+        }
     }
 
     public int getMaxVizMennyiseg() {
@@ -34,6 +40,7 @@ public abstract class Leny {
     }
 
     public void setMaxVizMennyiseg(int maxVizMennyiseg) {
+
         this.maxVizMennyiseg = maxVizMennyiseg;
     }
 
@@ -50,13 +57,13 @@ public abstract class Leny {
     }
 
     public void setMegtettTavolsag(int megtettTavolsag) {
-        this.megtettTavolsag = megtettTavolsag;
+        this.megtettTavolsag += megtettTavolsag;
     }
 
 
-    public abstract void drink();
+    public abstract void drink(String nap);
 
-    public abstract void move();
+    public abstract void move(String nap);
 
     @Override
     public String toString() {
