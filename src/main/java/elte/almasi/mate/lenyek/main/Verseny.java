@@ -2,38 +2,47 @@ package elte.almasi.mate.lenyek.main;
 
 import elte.almasi.mate.lenyek.model.Leny;
 import elte.almasi.mate.lenyek.model.Szivacs;
+import elte.almasi.mate.lenyek.utils.IOUtil;
 
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class Verseny {
 
+    private static String rootPath = Paths.get("").toAbsolutePath().toString();
+    private static List<String> fileContentAsStr = null;
+    private static List<Leny> lenyek = null;
+
     public static void main(String[] args) {
-        System.out.println("Verseny kezdodik");
+
+        lenyek = new ArrayList<Leny>();
+
+        //0. Bekérni a File nevét
 
         //1. file beolvasása
-
+        fileContentAsStr = IOUtil.getFileContentAsList("C:\\Archive\\personal\\LenyekversenyeMvn\\src\\main\\resources\\input.txt");
+        fileContentAsStr.forEach(System.out::println);
 
         //2. objektumok inicializálása
-        List<Leny> lenyek = new ArrayList<Leny>();
+        int lenyekSzama = Integer.parseInt(fileContentAsStr.get(0));
+        for (int i=0; i<lenyekSzama; i++){
+            Leny leny = null;
+            String egysor = fileContentAsStr.get(i + 1);
+            String[] egyLenyDefinicioja = egysor.split(" ");
+            if(egyLenyDefinicioja[1] == "h"){
+                leny = new Szivacs(egyLenyDefinicioja[0].trim(), Integer.parseInt(egyLenyDefinicioja[2]));
+            }else{
+                continue;
+            }
+            lenyek.add(leny);
 
-        /*
-        Leny homokjaro = new Homokjaro("Vandor", 4);
-        lenyek.add(homokjaro);
-*/
-        Leny szivacs = new Szivacs("Csuszo", 10);
-        lenyek.add(szivacs);
+        }
 
-        Leny szivacs2 = new Szivacs("Csuszo2", 4);
-        lenyek.add(szivacs2);
-
+        String napok = fileContentAsStr.get(fileContentAsStr.size()-1);
 
         //3. verseny futtatása
-
-        String napok = "nffeeennf";
-
-
         for (int i=0; i<napok.length(); i++){
             String nap = String.valueOf(napok.charAt(i));
             System.out.println(nap);
