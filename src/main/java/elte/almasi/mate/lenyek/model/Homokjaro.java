@@ -8,12 +8,14 @@ public class Homokjaro extends Leny {
     }
 
     @Override
-    void drink() {
-
+    public void drink() {
+        System.out.println("Homokjaro ivott");
     }
 
     @Override
-    void move() {
+    public void move() {
+        System.out.println("Homokjaro lepett");
+
 
     }
 

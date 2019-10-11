@@ -5,9 +5,8 @@ public abstract class Leny {
     private String nev;
     private int vizMennyiseg;
     private int maxVizMennyiseg;
-    private boolean alive;
+    private boolean alive = true;
     private int megtettTavolsag = 0; // kezdetben a megtett tavolsag = 0
-
 
     public Leny(String nev, int vizMennyiseg) {
         this.nev = nev;
@@ -55,9 +54,9 @@ public abstract class Leny {
     }
 
 
-    abstract void drink();
+    public abstract void drink();
 
-    abstract void move();
+    public abstract void move();
 
     @Override
     public String toString() {
