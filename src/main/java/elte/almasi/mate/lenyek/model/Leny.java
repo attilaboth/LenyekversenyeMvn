@@ -60,10 +60,13 @@ public abstract class Leny implements Comparable<Leny>{
         this.megtettTavolsag += tavolsag;
     }
 
+    /**
+     *
+     * @param nap
+     */
+    public abstract void vizetVeszit(String nap);
 
-    public abstract void drink(String nap);
-
-    public abstract void move(String nap);
+    public abstract void elmozdul(String nap);
 
     @Override
     public String toString() {

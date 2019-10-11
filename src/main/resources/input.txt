@@ -1,6 +1,10 @@
-4
+8
 Vandor h 4
 Seta l 7
-Csuszo s 12
+Csuszo s 4
 Siklo s 10
-nffeeennf
+Vandor2 h 2
+Seta2 l 7
+Csuszo2 s 14
+Siklo2 s 5
+nnnffeeennf

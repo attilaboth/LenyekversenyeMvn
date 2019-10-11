@@ -8,18 +8,18 @@ public class Szivacs extends Leny {
     }
 
     @Override
-    public void drink(String nap) {
+    public void vizetVeszit(String nap) {
         switch (nap.toLowerCase()) {
             case "n":
-                System.out.println("Szivacs ivott NAPOS napon");
+                //System.out.println("Szivacs ivott NAPOS napon");
                 setVizMennyiseg(-4);
                 break;
             case "f":
-                System.out.println("Szivacs ivott FELHŐS napon");
+               // System.out.println("Szivacs ivott FELHŐS napon");
                 setVizMennyiseg(-1);
                 break;
             case "e":
-                System.out.println("Szivacs ivott ESŐS napon");
+               // System.out.println("Szivacs ivott ESŐS napon");
                 setVizMennyiseg(6);
                 break;
             default:
@@ -27,18 +27,18 @@ public class Szivacs extends Leny {
     }
 
     @Override
-    public void move(String nap) {
+    public void elmozdul(String nap) {
         switch (nap.toLowerCase()) {
             case "n":
-                System.out.println("Szivacs mozgott NAPOS napon");
+                //System.out.println("Szivacs mozgott NAPOS napon");
                 setMegtettTavolsag(0);
                 break;
             case "f":
-                System.out.println("Szivacs mozgott FELHŐS napon");
+                //System.out.println("Szivacs mozgott FELHŐS napon");
                 setMegtettTavolsag(1);
                 break;
             case "e":
-                System.out.println("Szivacs mozgott ESŐS napon");
+                //System.out.println("Szivacs mozgott ESŐS napon");
                 setMegtettTavolsag(3);
                 break;
             default:
