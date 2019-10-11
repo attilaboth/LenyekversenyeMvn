@@ -6,7 +6,9 @@ import elte.almasi.mate.lenyek.model.Szivacs;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Verseny {
 
@@ -25,11 +27,13 @@ public class Verseny {
         Leny szivacs = new Szivacs("Csuszo", 10);
         lenyek.add(szivacs);
 
+        Leny szivacs2 = new Szivacs("Csuszo2", 4);
+        lenyek.add(szivacs2);
+
 
         //3. verseny futtatása
 
-        //String napok = "nffeeennf";
-        String napok = "nnn";
+        String napok = "nffeeennf";
 
 
         for (int i=0; i<napok.length(); i++){
@@ -49,7 +53,13 @@ public class Verseny {
             }
         }
 
+        Collections.sort(lenyek);
         lenyek.forEach(System.out::println);
 
+        if(!lenyek.isEmpty()){
+            System.out.println(lenyek.get(0).getNev());
+        }else{
+            System.out.println("Minden lény elpusztult.");
+        }
     }
 }

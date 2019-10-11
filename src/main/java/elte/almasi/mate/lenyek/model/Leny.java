@@ -1,12 +1,12 @@
 package elte.almasi.mate.lenyek.model;
 
-public abstract class Leny {
+public abstract class Leny implements Comparable<Leny>{
 
     private String nev;
     private int vizMennyiseg;
     private int maxVizMennyiseg;
     private boolean alive = true;
-    private int megtettTavolsag = 0; // kezdetben a megtett tavolsag = 0
+    private int megtettTavolsag;
 
     public Leny(String nev, int vizMennyiseg) {
         this.nev = nev;
@@ -56,8 +56,8 @@ public abstract class Leny {
         return megtettTavolsag;
     }
 
-    public void setMegtettTavolsag(int megtettTavolsag) {
-        this.megtettTavolsag += megtettTavolsag;
+    public void setMegtettTavolsag(int tavolsag) {
+        this.megtettTavolsag += tavolsag;
     }
 
 
@@ -75,5 +75,10 @@ public abstract class Leny {
         sb.append(", megtettTavolsag=").append(megtettTavolsag);
         sb.append('}');
         return sb.toString();
+    }
+
+    @Override
+    public int compareTo(Leny leny) {
+        return  leny.getMegtettTavolsag() - this.getMegtettTavolsag();
     }
 }
