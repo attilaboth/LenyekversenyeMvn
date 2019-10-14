@@ -4,8 +4,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 public class SzivacsTest {
 
     public Leny szivacs = null;
@@ -17,19 +15,19 @@ public class SzivacsTest {
 
     @Test
     public void vizetVeszitNapos() {
-        szivacs.vizetVeszit("n");
+        szivacs.vizMennyisegValtozas("n");
         Assert.assertEquals(12, szivacs.getVizMennyiseg());
     }
 
     @Test
     public void vizetVeszitFelhos() {
-        szivacs.vizetVeszit("f");
+        szivacs.vizMennyisegValtozas("f");
         Assert.assertEquals(15, szivacs.getVizMennyiseg());
     }
 
     @Test
     public void vizetVeszitEsos() {
-        szivacs.vizetVeszit("e");
+        szivacs.vizMennyisegValtozas("e");
         Assert.assertEquals(20, szivacs.getVizMennyiseg());
     }
 

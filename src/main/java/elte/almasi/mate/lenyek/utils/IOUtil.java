@@ -7,11 +7,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
+/**
+ * Ebbe az osztalyba tettem ki a file beolvasas műveletét
+ */
 public class IOUtil {
 
     public static List<String> getFileContentAsList(String pathtoFile) {
 
         List<String> linesInArray = new ArrayList<>();
+
         try (Stream<String> fileAsStream = Files.lines(Paths.get(pathtoFile))) {
 
             fileAsStream.forEach(aLine -> {

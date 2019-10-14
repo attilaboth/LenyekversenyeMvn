@@ -8,8 +8,12 @@ public class Lepegeto extends Leny {
 
     }
 
+    /**
+     * A Lenyre specifikus viz valtozas definialasa
+     * @param nap
+     */
     @Override
-    public void vizetVeszit(String nap) {
+    public void vizMennyisegValtozas(String nap) {
         switch (nap.toLowerCase()) {
             case "n":
                // System.out.println("Lepegeto ivott NAPOS napon");
@@ -27,6 +31,10 @@ public class Lepegeto extends Leny {
         }
     }
 
+    /**
+     * A Lenyre specifikus elmozdulas definialasa
+     * @param nap
+     */
     @Override
     public void elmozdul(String nap) {
         switch (nap.toLowerCase()) {

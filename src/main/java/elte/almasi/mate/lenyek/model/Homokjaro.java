@@ -7,8 +7,12 @@ public class Homokjaro extends Leny {
         setMaxVizMennyiseg(8);
     }
 
+    /**
+     * A Lenyre specifikus viz valtozas definialasa
+     * @param nap
+     */
     @Override
-    public void vizetVeszit(String nap) {
+    public void vizMennyisegValtozas(String nap) {
         switch (nap.toLowerCase()) {
             case "n":
                 //System.out.println("Homokjaro ivott NAPOS napon");
@@ -26,6 +30,10 @@ public class Homokjaro extends Leny {
         }
     }
 
+    /**
+     * A Lenyre specifikus elmozdulas definialasa
+     * @param nap
+     */
     @Override
     public void elmozdul(String nap) {
         switch (nap.toLowerCase()) {

@@ -4,8 +4,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 public class LepegetoTest {
 
     public Leny lepegeto = null;
@@ -17,19 +15,19 @@ public class LepegetoTest {
 
     @Test
     public void vizetVeszitNapos() {
-        lepegeto.vizetVeszit("n");
+        lepegeto.vizMennyisegValtozas("n");
         Assert.assertEquals(9, lepegeto.getVizMennyiseg());
     }
 
     @Test
     public void vizetVeszitFelhos() {
-        lepegeto.vizetVeszit("f");
+        lepegeto.vizMennyisegValtozas("f");
         Assert.assertEquals(10, lepegeto.getVizMennyiseg());
     }
 
     @Test
     public void vizetVeszitEsos() {
-        lepegeto.vizetVeszit("e");
+        lepegeto.vizMennyisegValtozas("e");
         Assert.assertEquals(12, lepegeto.getVizMennyiseg());
     }
 

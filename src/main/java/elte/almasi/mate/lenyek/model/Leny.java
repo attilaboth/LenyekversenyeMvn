@@ -17,14 +17,17 @@ public abstract class Leny implements Comparable<Leny>{
         return nev;
     }
 
-    public void setNev(String nev) {
-        this.nev = nev;
-    }
-
     public int getVizMennyiseg() {
         return vizMennyiseg;
     }
 
+    /**
+     * A vizmennyiseg valtozasank szamolasa.
+     * Ha elfogy a viz menniyseg akkor alive boolean flag false lesz
+     * Ha a vizmennyiseg merteke eleri a fajra jellemzo maximumot, akkor
+     * az lesz a vizmennyiseg erteke.
+     * @param vizMennyiseg
+     */
     public void setVizMennyiseg(int vizMennyiseg) {
         this.vizMennyiseg += vizMennyiseg;
         if(getVizMennyiseg() <= 0){
@@ -61,11 +64,15 @@ public abstract class Leny implements Comparable<Leny>{
     }
 
     /**
-     *
+     * A viz mennyisegenek valtozasa. Lehet + es - iranyu is
      * @param nap
      */
-    public abstract void vizetVeszit(String nap);
+    public abstract void vizMennyisegValtozas(String nap);
 
+    /**
+     * elmozdulas metodusa
+     * @param nap
+     */
     public abstract void elmozdul(String nap);
 
     @Override
@@ -80,6 +87,12 @@ public abstract class Leny implements Comparable<Leny>{
         return sb.toString();
     }
 
+    /**
+     * A vegeredmeny sorbarendezese a megtett tavolsag szerint.
+     * A lista legelso eleme lesz legnagyobb megtett tavolsag szerint
+     * @param leny
+     * @return
+     */
     @Override
     public int compareTo(Leny leny) {
         return  leny.getMegtettTavolsag() - this.getMegtettTavolsag();

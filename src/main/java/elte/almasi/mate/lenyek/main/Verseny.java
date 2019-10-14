@@ -6,36 +6,43 @@ import elte.almasi.mate.lenyek.model.Lepegeto;
 import elte.almasi.mate.lenyek.model.Szivacs;
 import elte.almasi.mate.lenyek.utils.IOUtil;
 
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Scanner;
 
 public class Verseny {
 
-    private static String rootPath = Paths.get("").toAbsolutePath().toString();
-    private static List<String> fileTartalmaStringLista = null;
-    private static List<Leny> lenyek = null;
-
     public static void main(String[] args) {
+        //gyűjtemény a lények tárolására
+        List<Leny> lenyek = new ArrayList<Leny>();
 
-        lenyek = new ArrayList<Leny>();
+        //1. Beolvasom a file nevét (teljes elérési úttal együtt)
+        System.out.println("Add meg a file nevét teljes elérési úttal:");
+        System.out.println("pl.:  C:\\dev\\LenyekversenyeMvn\\src\\main\\resources\\input.txt");
+        String fileNeveTeljes = null;
 
-        //0. Bekérni a File nevét
+        try(Scanner sc = new Scanner(System.in)){
+            fileNeveTeljes = sc.nextLine();  // beolvasom a file teljes utvonalát
+            //System.out.println("fileNeveTeljes : " + fileNeveTeljes);  // Output user input
+        } catch (Exception ex){
+            System.err.println("... hiba a file nevének megadásában. ");
+            ex.printStackTrace();
+        }
 
+        //2. Input file bejárása és objektumok inicializálása
+        List<String> fileTartalmaStringLista = IOUtil.getFileContentAsList(fileNeveTeljes.trim());
 
-        //1. file beolvasása
-        fileTartalmaStringLista = IOUtil.getFileContentAsList("C:\\Archive\\personal\\LenyekversenyeMvn\\src\\main\\resources\\input.txt");
-        //fileTartalmaStringLista.forEach(System.out::println);
-
-        //2. objektumok inicializálása
         int lenyekSzama = Integer.parseInt(fileTartalmaStringLista.get(0));
         for (int i = 0; i < lenyekSzama; i++) {
             Leny leny = null;
             String egysor = fileTartalmaStringLista.get(i + 1);
-            System.out.println(egysor);
+
+            // a sort felbontom spacek mentén
+            // sor: Vandor h 4
             String[] egyLenyDefinicioja = egysor.split(" ");
 
+            //eldöntöm, hogy melyik tipusu lenyt definilaja a sor
             if (egyLenyDefinicioja[1].equals("h")) {
                 leny = new Homokjaro(egyLenyDefinicioja[0].trim(), Integer.parseInt(egyLenyDefinicioja[2]));
             } else if (egyLenyDefinicioja[1].equals("s")) {
@@ -43,7 +50,8 @@ public class Verseny {
             } else if (egyLenyDefinicioja[1].equals("l")) {
                 leny = new Lepegeto(egyLenyDefinicioja[0].trim(), Integer.parseInt(egyLenyDefinicioja[2]));
             } else {
-                //mindenki mast kizarunk a versenybol
+                //mindenki mast kizarunk a versenybol, aki nincs a lenyek listajaban
+                // tehat nem adom hozza a gyüjtemé nyhez
                 continue;
             }
             //lenyek hozzaadasa a gyujtemenyhez
@@ -51,35 +59,40 @@ public class Verseny {
 
         }
 
+        // a file utolso sora a verseny napjait definialja
         String napok = fileTartalmaStringLista.get(fileTartalmaStringLista.size() - 1);
 
-        //3. verseny futtatása
+        //3. verseny futtatása: - bejarom a napokat
         for (int i = 0; i < napok.length(); i++) {
             String nap = String.valueOf(napok.charAt(i));
 
             for (Leny leny : lenyek) {
-                leny.vizetVeszit(nap);
+                // a leny az adott napon valtoztat vizmennyiseget
+                leny.vizMennyisegValtozas(nap);
+                // ha eletben van a leny
                 if (leny.isAlive()) {
+                    // akkor elmozdul az adott napnak megfeleloen
                     leny.elmozdul(nap);
-                    // System.out.println("Viz: " + leny.getVizMennyiseg() + " tav: " + leny.getMegtettTavolsag());
                 } else {
-                    //System.out.println("*** halott leny: " + leny);
-
+                    // itt halott a leny
                 }
-                // System.out.println(leny);
             }
         }
 
+        // az összegyüjtött lényeket a gyűjteményben berendezem
         Collections.sort(lenyek);
-        lenyek.forEach(System.out::println);
 
+        //eldöntöm a győztest és a nevét kiiratom
         if (!lenyek.isEmpty()) {
-            Leny elsoLeny = lenyek.get(0);
-            if (elsoLeny.isAlive()) {
-                System.out.println(elsoLeny.getNev());
-            }
+            for (Leny egyLeny: lenyek) {
+               //System.out.println(egyLeny);
 
-        } else {
+                if (egyLeny.isAlive()) {
+                    // megtaláltuk az életben maradt lényt aki a legmesszebb jutott
+                    System.out.println(egyLeny.getNev());
+                    return;
+                }
+            }
             System.out.println("Minden lény elpusztult.");
         }
     }

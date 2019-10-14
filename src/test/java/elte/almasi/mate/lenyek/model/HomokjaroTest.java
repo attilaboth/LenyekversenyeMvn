@@ -4,8 +4,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 public class HomokjaroTest {
 
     public Leny homokjaro = null;
@@ -17,19 +15,19 @@ public class HomokjaroTest {
 
     @Test
     public void vizetVeszitNapos() {
-        homokjaro.vizetVeszit("n");
+        homokjaro.vizMennyisegValtozas("n");
         Assert.assertEquals(6, homokjaro.getVizMennyiseg());
     }
 
     @Test
     public void vizetVeszitFelhos() {
-        homokjaro.vizetVeszit("f");
+        homokjaro.vizMennyisegValtozas("f");
         Assert.assertEquals(7, homokjaro.getVizMennyiseg());
     }
 
     @Test
     public void vizetVeszitEsos() {
-        homokjaro.vizetVeszit("e");
+        homokjaro.vizMennyisegValtozas("e");
         Assert.assertEquals(8, homokjaro.getVizMennyiseg());
     }
 
