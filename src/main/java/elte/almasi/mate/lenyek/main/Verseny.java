@@ -31,7 +31,7 @@ public class Verseny {
         }
 
         //2. Input file bejárása és objektumok inicializálása
-        List<String> fileTartalmaStringLista = IOUtil.getFileContentAsList(fileNeveTeljes.trim());
+        List<String> fileTartalmaStringLista = IOUtil.fileTartalomBeolvasasa(fileNeveTeljes.trim());
 
         int lenyekSzama = Integer.parseInt(fileTartalmaStringLista.get(0));
         for (int i = 0; i < lenyekSzama; i++) {

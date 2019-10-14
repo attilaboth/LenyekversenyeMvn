@@ -12,7 +12,7 @@ import java.util.List;
  */
 public class IOUtil {
 
-    public static List<String> getFileContentAsList(String pathtoFile) {
+    public static List<String> fileTartalomBeolvasasa(String pathtoFile) {
 
         List<String> linesInArray = new ArrayList<>();
         BufferedReader bufferedOlvaso = null;
@@ -26,9 +26,8 @@ public class IOUtil {
 
             bufferedOlvaso.close();
         } catch (IOException e) {
-            System.err.format("IOException: %s%n", e);
+            System.err.format(e.getLocalizedMessage());
         }
-
         return linesInArray;
     }
 }
