@@ -5,6 +5,10 @@ A program futtatása a Verseny.java osztállyal lehetséges.A model csomag tarta
 
 A teszt mappában 3 teszt osztály van. JUnit4-et használtam. A 3 tesztosztály egy-egy Lény fajra jellemző vizgazdálkodási és elmodulási metódusait teszteli.
 
+# Futtathato jar készítése:
+A projekt fő szintjén: mvn clean package paranccssal 
+Eredmény: /target/Lenyekversenye-1.0-SNAPSHOT.jar futtatható állomány.
+
 # Feladat leírása 
 Közös elvárás a megoldásoknál, hogy gyűjteményben tároljuk az azonos ősosztályból származtatott
 osztályok objektumait. Az objektumok feldolgozása során használjunk foreach szerkezetet. Hibás
