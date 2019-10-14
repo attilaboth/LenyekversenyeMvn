@@ -1,5 +1,10 @@
 # Lenyekversenye
 
+A program elkészítéshez IntelliJ fejelsztő eszközt használtam. Maven-t használtam a file struktúra kialakítása céljából.
+A program futtatása a Verseny.java osztállyal lehetséges.A model csomag tartalmazza a lényekkel kapcsoaltos osztályokat, és a utils csomagban van jelenleg egy osztály ami a file beolvasásásért felelős.
+
+A teszt mappában 3 teszt osztály van. JUnit4-et használtam. A 3 tesztosztály egy-egy Lény fajra jellemző vizgazdálkodási és elmodulási metódusait teszteli.
+
 # Feladat leírása 
 Közös elvárás a megoldásoknál, hogy gyűjteményben tároljuk az azonos ősosztályból származtatott
 osztályok objektumait. Az objektumok feldolgozása során használjunk foreach szerkezetet. Hibás
