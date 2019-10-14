@@ -1,6 +1,6 @@
 package elte.almasi.mate.lenyek.model;
 
-public abstract class Leny implements Comparable<Leny>{
+public abstract class Leny implements Comparable<Leny> {
 
     private String nev;
     private int vizMennyiseg;
@@ -26,14 +26,15 @@ public abstract class Leny implements Comparable<Leny>{
      * Ha elfogy a viz menniyseg akkor alive boolean flag false lesz
      * Ha a vizmennyiseg merteke eleri a fajra jellemzo maximumot, akkor
      * az lesz a vizmennyiseg erteke.
+     *
      * @param vizMennyiseg
      */
     public void setVizMennyiseg(int vizMennyiseg) {
         this.vizMennyiseg += vizMennyiseg;
-        if(getVizMennyiseg() <= 0){
+        if (getVizMennyiseg() <= 0) {
             setAlive(false);
         }
-        if(getVizMennyiseg() >= getMaxVizMennyiseg()){
+        if (getVizMennyiseg() >= getMaxVizMennyiseg()) {
             this.vizMennyiseg = getMaxVizMennyiseg();
         }
     }
@@ -47,6 +48,10 @@ public abstract class Leny implements Comparable<Leny>{
         this.maxVizMennyiseg = maxVizMennyiseg;
     }
 
+    /**
+     * Boolean flag a lény él-e
+     * @return
+     */
     public boolean isAlive() {
         return alive;
     }
@@ -65,12 +70,14 @@ public abstract class Leny implements Comparable<Leny>{
 
     /**
      * A viz mennyisegenek valtozasa. Lehet + es - iranyu is
+     *
      * @param nap
      */
     public abstract void vizMennyisegValtozas(String nap);
 
     /**
      * elmozdulas metodusa
+     *
      * @param nap
      */
     public abstract void elmozdul(String nap);
@@ -90,11 +97,12 @@ public abstract class Leny implements Comparable<Leny>{
     /**
      * A vegeredmeny sorbarendezese a megtett tavolsag szerint.
      * A lista legelso eleme lesz legnagyobb megtett tavolsag szerint
+     *
      * @param leny
      * @return
      */
     @Override
     public int compareTo(Leny leny) {
-        return  leny.getMegtettTavolsag() - this.getMegtettTavolsag();
+        return leny.getMegtettTavolsag() - this.getMegtettTavolsag();
     }
 }
