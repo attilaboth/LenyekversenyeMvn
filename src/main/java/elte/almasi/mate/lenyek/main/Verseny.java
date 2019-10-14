@@ -82,7 +82,7 @@ public class Verseny {
         // az összegyüjtött lényeket a gyűjteményben berendezem
         Collections.sort(lenyek);
 
-        //eldöntöm a győztest és a nevét kiiratom
+        //eldöntöm a győztest és a nevét kiiratom foreach ciklussal
         if (!lenyek.isEmpty()) {
             for (Leny egyLeny: lenyek) {
                //System.out.println(egyLeny);
