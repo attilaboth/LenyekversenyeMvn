@@ -1,11 +1,11 @@
 package elte.almasi.mate.lenyek.utils;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Stream;
 
 /**
  * Ebbe az osztalyba tettem ki a file beolvasas műveletét
@@ -15,17 +15,18 @@ public class IOUtil {
     public static List<String> getFileContentAsList(String pathtoFile) {
 
         List<String> linesInArray = new ArrayList<>();
+        BufferedReader bufferedOlvaso = null;
+        try{
+            bufferedOlvaso = new BufferedReader(new FileReader(new File(pathtoFile)));
 
-        try (Stream<String> fileAsStream = Files.lines(Paths.get(pathtoFile))) {
+            String egySor;
+            while ((egySor = bufferedOlvaso.readLine()) != null) {
+                linesInArray.add(egySor.trim());
+            }
 
-            fileAsStream.forEach(aLine -> {
-
-                linesInArray.add(aLine.trim());
-
-            });
-
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
+            bufferedOlvaso.close();
+        } catch (IOException e) {
+            System.err.format("IOException: %s%n", e);
         }
 
         return linesInArray;
